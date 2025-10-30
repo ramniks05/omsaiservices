@@ -1,0 +1,131 @@
+/* Custom Styles for OmSai Security & Services */
+
+body {
+  font-optical-sizing: auto;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(1200px 500px at 10% 10%, rgba(13,110,253,0.08), transparent),
+              radial-gradient(900px 400px at 90% 20%, rgba(25,135,84,0.08), transparent);
+  pointer-events: none;
+}
+
+.hero-visual img {
+  filter: saturate(1.05) contrast(1.02);
+}
+
+.service-card .card-img-top {
+  height: 220px;
+  object-fit: cover;
+}
+
+.cta-strip {
+  background: linear-gradient(135deg, #0d6efd, #198754);
+}
+
+/* Improve focus visibility */
+:focus-visible {
+  outline: 3px solid rgba(13,110,253,.4);
+  outline-offset: 2px;
+}
+
+/* Subtle hover elevation */
+.card:hover {
+  transform: translateY(-2px);
+  transition: transform .2s ease, box-shadow .2s ease;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.08)!important;
+}
+
+/* Small utility tweaks */
+.object-fit-cover {
+  object-fit: cover;
+}
+
+/* Contact section styling */
+.contact-section {
+  background: radial-gradient(900px 400px at 10% 10%, rgba(13,110,253,.06), transparent),
+              radial-gradient(900px 400px at 90% 20%, rgba(25,135,84,.06), transparent);
+}
+.card-lift {
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.card-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 1rem 2rem rgba(0,0,0,.08)!important;
+}
+.list-contacts a { color: inherit; }
+.list-contacts a:hover { color: #0d6efd; }
+
+/* Modern hero */
+.hero {
+  min-height: 78vh;
+  padding: 6rem 0;
+  background-image: url('../images/hero-banner.svg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(1000px 600px at 15% 30%, rgba(13,110,253,.35), transparent),
+              radial-gradient(900px 500px at 85% 20%, rgba(25,135,84,.32), transparent),
+              linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.35));
+  pointer-events: none;
+  z-index: 1;
+}
+.shape {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(50px);
+  opacity: .35;
+  z-index: 0;
+}
+.shape-1 { width: 300px; height: 300px; background: #0d6efd; top: -60px; right: -60px; }
+.shape-2 { width: 220px; height: 220px; background: #198754; bottom: -40px; left: -40px; }
+
+/* Glass navbar */
+.nav-glass {
+  background: rgba(255,255,255,.8)!important;
+  backdrop-filter: saturate(120%) blur(8px);
+}
+
+/* Floating contact buttons */
+.floating-contact { position: fixed; right: 16px; bottom: 16px; z-index: 1050; display: flex; flex-direction: column; gap: 10px; }
+.fab { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 50%; color: #fff; text-decoration: none; box-shadow: 0 .5rem 1rem rgba(0,0,0,.2); transition: transform .2s ease; }
+.fab:hover { transform: translateY(-2px); }
+.fab.whatsapp { background: #25D366; }
+.fab.call { background: #0d6efd; }
+
+/* Simple reveal */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(8px);} to { opacity: 1; transform: translateY(0);} }
+.hero .badge, .hero h1, .hero p, .hero .btn, .hero .text-white-50 { animation: fadeUp .6s ease both; }
+.hero h1 { animation-delay: .05s; }
+.hero p { animation-delay: .15s; }
+.hero .btn { animation-delay: .25s; }
+.hero .text-white-50 { animation-delay: .35s; }
+
+/* Ensure hero content sits above overlay */
+.hero .container { position: relative; z-index: 2; }
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+  .hero { padding: 4rem 0; min-height: 70vh; }
+}
+
+/* Sub-hero for inner pages */
+.sub-hero {
+  min-height: 40vh;
+  padding: 3.5rem 0;
+  background-image: url('../images/hero-banner.svg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.breadcrumb-light .breadcrumb-item + .breadcrumb-item::before { color: rgba(255,255,255,.7); }
+.breadcrumb-light .breadcrumb-item a { color: rgba(255,255,255,.85); }
+.breadcrumb-light .breadcrumb-item.active { color: #fff; }
+
+
