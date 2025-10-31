@@ -21,6 +21,21 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <!-- Custom Styles -->
     <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+      .gallery-section { padding: 64px 0; }
+      .gallery-filters { display:flex; gap:12px; margin:16px 0 24px; flex-wrap:wrap; }
+      .filter-btn { padding:8px 14px; border:1px solid #ccc; background:#fff; border-radius:999px; cursor:pointer; }
+      .filter-btn.is-active { background:#111; color:#fff; border-color:#111; }
+      .gallery-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:14px; }
+      .gallery-item { overflow:hidden; border-radius:10px; background:#f8f8f8; }
+      .gallery-item img { width:100%; height:220px; object-fit:cover; display:block; transition:transform .25s ease; }
+      .gallery-item:hover img { transform:scale(1.04); }
+      .lightbox { width:min(92vw, 1000px); border:none; padding:0; }
+      .lightbox::backdrop { background:rgba(0,0,0,.7); }
+      .lightbox-img { width:100%; height:auto; display:block; }
+      .lightbox-close { position:absolute; top:10px; right:14px; background:#000; color:#fff; border:none; border-radius:50%; width:36px; height:36px; cursor:pointer; }
+      .hidden { display:none !important; }
+    </style>
   </head>
   <body>
     <!-- Top Bar -->
@@ -201,6 +216,11 @@
                   <div class="fw-semibold">Registration Details</div>
                   <div class="text-secondary mt-1">नोंदणी क्र.: एल. एन. डी. / जी. एन. एल. / स्वयंरोजगार / 151 / आ. 08 नांदेड</div>
                   <div class="text-secondary">दिनांक: 20-11-2008</div>
+                  <div class="mt-2">
+                    <a class="text-decoration-none" href="assets/license.pdf" target="_blank" rel="noopener">
+                      <i class="bi bi-file-pdf text-danger me-1"></i> Download License (PDF)
+                    </a>
+                  </div>
                 </div>
               </div>
               <div class="col-sm-6">
@@ -217,6 +237,92 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="gallery-section" aria-label="Service Gallery">
+      <div class="container">
+        <div class="text-center mb-3">
+          <span class="badge rounded-pill text-bg-primary-subtle text-primary">Gallery</span>
+          <h2 class="fw-bold mt-2 mb-1">Our Gallery</h2>
+          <p class="text-secondary mb-0">Explore our services, staff, and on-ground work.</p>
+        </div>
+        <div class="gallery-filters d-flex justify-content-center" role="tablist" aria-label="Gallery Categories">
+          <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="filter-btn" data-filter="service" role="tab">Service</button>
+          <button class="filter-btn" data-filter="staff" role="tab">Staff</button>
+          <button class="filter-btn" data-filter="work" role="tab">Work</button>
+        </div>
+        <div class="gallery-grid">
+          <!-- Work: cleaning-images -->
+          <figure class="gallery-item" data-category="work">
+            <img src="assets/images/cleaning-images/WhatsApp Image 2025-10-31 at 11.48.38 AM.jpeg" alt="Cleaning service work" loading="lazy">
+            <figcaption class="p-2 small text-secondary">Cleaning Service</figcaption>
+          </figure>
+          <figure class="gallery-item" data-category="work">
+            <img src="assets/images/cleaning-images/WhatsApp Image 2025-10-31 at 11.48.38 AM (1).jpeg" alt="Cleaning service work" loading="lazy">
+            <figcaption class="p-2 small text-secondary">Cleaning Service</figcaption>
+          </figure>
+          <figure class="gallery-item" data-category="work">
+            <img src="assets/images/cleaning-images/WhatsApp Image 2025-10-31 at 11.48.39 AM.jpeg" alt="Cleaning service work" loading="lazy">
+            <figcaption class="p-2 small text-secondary">Cleaning Service</figcaption>
+          </figure>
+          <figure class="gallery-item" data-category="work">
+            <img src="assets/images/cleaning-images/WhatsApp Image 2025-10-31 at 11.48.39 AM (1).jpeg" alt="Cleaning service work" loading="lazy">
+            <figcaption class="p-2 small text-secondary">Cleaning Service</figcaption>
+          </figure>
+          <figure class="gallery-item" data-category="work">
+            <img src="assets/images/cleaning-images/WhatsApp Image 2025-10-31 at 11.48.39 AM (2).jpeg" alt="Cleaning service work" loading="lazy">
+            <figcaption class="p-2 small text-secondary">Cleaning Service</figcaption>
+          </figure>
+          <figure class="gallery-item" data-category="work">
+            <img src="assets/images/cleaning-images/WhatsApp Image 2025-10-31 at 11.48.40 AM.jpeg" alt="Cleaning service work" loading="lazy">
+            <figcaption class="p-2 small text-secondary">Cleaning Service</figcaption>
+          </figure>
+
+          <!-- Staff: Gaurd-uniform-pic -->
+          <figure class="gallery-item" data-category="staff">
+            <img src="assets/images/Gaurd-uniform-pic/0.jpg" alt="Uniformed security staff" loading="lazy">
+            <figcaption class="p-2 small text-secondary">Security Staff</figcaption>
+          </figure>
+          <figure class="gallery-item" data-category="staff">
+            <img src="assets/images/Gaurd-uniform-pic/1.jpg" alt="Uniformed security staff" loading="lazy">
+            <figcaption class="p-2 small text-secondary">Security Staff</figcaption>
+          </figure>
+          <figure class="gallery-item" data-category="staff">
+            <img src="assets/images/Gaurd-uniform-pic/2.jpg" alt="Uniformed security staff" loading="lazy">
+            <figcaption class="p-2 small text-secondary">Security Staff</figcaption>
+          </figure>
+          <figure class="gallery-item" data-category="staff">
+            <img src="assets/images/Gaurd-uniform-pic/3.jpg" alt="Uniformed security staff" loading="lazy">
+            <figcaption class="p-2 small text-secondary">Security Staff</figcaption>
+          </figure>
+
+          <!-- Service: gun-man -->
+          <figure class="gallery-item" data-category="service">
+            <img src="assets/images/gun-man/WhatsApp Image 2025-10-31 at 2.31.53 PM.jpeg" alt="Armed security service" loading="lazy">
+            <figcaption class="p-2 small text-secondary">Armed Security</figcaption>
+          </figure>
+          <figure class="gallery-item" data-category="service">
+            <img src="assets/images/gun-man/WhatsApp Image 2025-10-31 at 2.31.53 PM (1).jpeg" alt="Armed security service" loading="lazy">
+            <figcaption class="p-2 small text-secondary">Armed Security</figcaption>
+          </figure>
+          <figure class="gallery-item" data-category="service">
+            <img src="assets/images/gun-man/WhatsApp Image 2025-10-31 at 2.31.53 PM (2).jpeg" alt="Armed security service" loading="lazy">
+            <figcaption class="p-2 small text-secondary">Armed Security</figcaption>
+          </figure>
+          <figure class="gallery-item" data-category="service">
+            <img src="assets/images/gun-man/WhatsApp Image 2025-10-31 at 2.31.54 PM.jpeg" alt="Armed security service" loading="lazy">
+            <figcaption class="p-2 small text-secondary">Armed Security</figcaption>
+          </figure>
+        </div>
+
+        <!-- Lightbox -->
+        <dialog class="lightbox" aria-label="Image preview">
+          <img class="lightbox-img" alt="">
+          <button class="lightbox-close" aria-label="Close">×</button>
+        </dialog>
       </div>
     </section>
 
@@ -371,6 +477,46 @@
       };
       onScroll();
       window.addEventListener('scroll', onScroll, { passive: true });
+    </script>
+    <script>
+      (function(){
+        const buttons = document.querySelectorAll('.filter-btn');
+        const items = document.querySelectorAll('.gallery-item');
+        const grid = document.querySelector('.gallery-grid');
+        const dlg = document.querySelector('.lightbox');
+        const dlgImg = document.querySelector('.lightbox-img');
+        const closeBtn = document.querySelector('.lightbox-close');
+
+        if (buttons.length) {
+          buttons.forEach(btn => btn.addEventListener('click', () => {
+            buttons.forEach(b => b.classList.remove('is-active'));
+            btn.classList.add('is-active');
+            const f = btn.dataset.filter;
+            const currentItems = document.querySelectorAll('.gallery-item');
+            currentItems.forEach(it => {
+              const show = f === 'all' || it.dataset.category === f;
+              it.classList.toggle('hidden', !show);
+            });
+          }));
+        }
+
+        if (grid) {
+          grid.addEventListener('click', function(e){
+            const img = e.target.closest('img');
+            if (!img) return;
+            dlgImg.src = img.getAttribute('src');
+            dlgImg.alt = img.getAttribute('alt') || '';
+            if (typeof dlg.showModal === 'function') {
+              dlg.showModal();
+            }
+          });
+        }
+
+        if (closeBtn && dlg) {
+          closeBtn.addEventListener('click', () => dlg.close());
+          dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+        }
+      })();
     </script>
   </body>
 </html>
