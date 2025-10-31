@@ -317,6 +317,7 @@
             <figcaption class="p-2 small text-secondary">Armed Security</figcaption>
           </figure>
         </div>
+        <div class="text-center text-secondary my-3 gallery-empty hidden">No images available.</div>
 
         <!-- Lightbox -->
         <dialog class="lightbox" aria-label="Image preview">
@@ -483,6 +484,7 @@
         const buttons = document.querySelectorAll('.filter-btn');
         const items = document.querySelectorAll('.gallery-item');
         const grid = document.querySelector('.gallery-grid');
+        const emptyEl = document.querySelector('.gallery-empty');
         const dlg = document.querySelector('.lightbox');
         const dlgImg = document.querySelector('.lightbox-img');
         const closeBtn = document.querySelector('.lightbox-close');
@@ -493,10 +495,13 @@
             btn.classList.add('is-active');
             const f = btn.dataset.filter;
             const currentItems = document.querySelectorAll('.gallery-item');
+            let visibleCount = 0;
             currentItems.forEach(it => {
               const show = f === 'all' || it.dataset.category === f;
               it.classList.toggle('hidden', !show);
+              if (show) visibleCount++;
             });
+            if (emptyEl) emptyEl.classList.toggle('hidden', visibleCount > 0);
           }));
         }
 
