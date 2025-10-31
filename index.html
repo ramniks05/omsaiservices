@@ -93,7 +93,7 @@
               🌟 ओमसाई स्वरोजगार सुरक्षा रक्षक व इतर सेवा पुरवठा सहकारी संस्था, जि. नांदेड.
             </h1>
             <p class="lead text-white-50 mt-3">
-              Professional Security Guards, Gunmen, Bouncers and Mechanised & Deep Housekeeping for industries, housing, hospitals, institutions, and events.
+              Professional Security Guards, Gunmen, Bouncers and Mechanised & Deep Housekeeping for industries, housing, hospitals, institutions and other manpower services.
             </p>
             <div class="d-flex flex-wrap gap-2 mt-3">
               <a href="#services" class="btn btn-primary btn-lg shadow"><i class="bi bi-shield-check me-2"></i>Security Services</a>
@@ -317,6 +317,9 @@
             <figcaption class="p-2 small text-secondary">Armed Security</figcaption>
           </figure>
         </div>
+        <div class="text-center my-3">
+          <button type="button" class="btn btn-outline-primary btn-sm gallery-more hidden">Show more images</button>
+        </div>
         <div class="text-center text-secondary my-3 gallery-empty hidden">No images available.</div>
 
         <!-- Lightbox -->
@@ -482,28 +485,55 @@
     <script>
       (function(){
         const buttons = document.querySelectorAll('.filter-btn');
-        const items = document.querySelectorAll('.gallery-item');
+        const items = Array.from(document.querySelectorAll('.gallery-item'));
         const grid = document.querySelector('.gallery-grid');
         const emptyEl = document.querySelector('.gallery-empty');
+        const moreBtn = document.querySelector('.gallery-more');
         const dlg = document.querySelector('.lightbox');
         const dlgImg = document.querySelector('.lightbox-img');
         const closeBtn = document.querySelector('.lightbox-close');
+        const MAX_ALL = 5;
+        let allExpanded = false;
+
+        function applyFilter(filter){
+          let visibleCount = 0;
+          if (filter === 'all' && !allExpanded) {
+            items.forEach((it, idx) => {
+              const show = idx < MAX_ALL;
+              it.classList.toggle('hidden', !show);
+              if (show) visibleCount++;
+            });
+            if (moreBtn) moreBtn.classList.toggle('hidden', items.length <= MAX_ALL);
+          } else {
+            items.forEach(it => {
+              const show = filter === 'all' || it.dataset.category === filter;
+              it.classList.toggle('hidden', !show);
+              if (show) visibleCount++;
+            });
+            if (moreBtn) moreBtn.classList.add('hidden');
+          }
+          if (emptyEl) emptyEl.classList.toggle('hidden', visibleCount > 0);
+        }
 
         if (buttons.length) {
           buttons.forEach(btn => btn.addEventListener('click', () => {
             buttons.forEach(b => b.classList.remove('is-active'));
             btn.classList.add('is-active');
             const f = btn.dataset.filter;
-            const currentItems = document.querySelectorAll('.gallery-item');
-            let visibleCount = 0;
-            currentItems.forEach(it => {
-              const show = f === 'all' || it.dataset.category === f;
-              it.classList.toggle('hidden', !show);
-              if (show) visibleCount++;
-            });
-            if (emptyEl) emptyEl.classList.toggle('hidden', visibleCount > 0);
+            if (f !== 'all') { allExpanded = false; }
+            applyFilter(f);
           }));
         }
+
+        if (moreBtn) {
+          moreBtn.addEventListener('click', () => {
+            allExpanded = true;
+            applyFilter('all');
+          });
+        }
+
+        // Initial state
+        applyFilter('all');
 
         if (grid) {
           grid.addEventListener('click', function(e){
@@ -525,5 +555,6 @@
     </script>
   </body>
 </html>
+
 
 
